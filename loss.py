@@ -3,6 +3,7 @@
 
 import torch as torch
 
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 def Active_Contour_Loss(y_true, y_pred): 
 
@@ -23,8 +24,8 @@ def Active_Contour_Loss(y_true, y_pred):
 	region term
 	"""
 
-	C_1 = torch.ones((256, 256))
-	C_2 = torch.zeros((256, 256))
+	C_1 = torch.ones_like(y_true[0,0])
+	C_2 = torch.zeros_like(y_true[0,0])
 
 	region_in = torch.abs(torch.mean( y_pred[:,0,:,:] * ((y_true[:,0,:,:] - C_1)**2) ) ) # equ.(12) in the paper
 	region_out = torch.abs(torch.mean( (1-y_pred[:,0,:,:]) * ((y_true[:,0,:,:] - C_2)**2) )) # equ.(12) in the paper

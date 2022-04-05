@@ -2,10 +2,10 @@ from load import load_nii
 from torch.utils.data import Dataset
 import torchvision.transforms as transforms
 from glob import glob
+import torch
 
 data_transforms = [
-    transforms.ToTensor(),
-    transforms.Resize((256, 256))
+    transforms.Resize((256,256))
 ]
 
 
@@ -25,8 +25,8 @@ class MedicalDataset(Dataset):
         self.transform = transforms.Compose(data_transforms)
 
     def __getitem__(self, index):
-        img = self.images[index]
-        gt = self.ground_truths[index]
+        img = torch.tensor(self.images[index]/255.0, dtype=torch.float32)[None,:]
+        gt = torch.tensor(self.ground_truths[index], dtype=torch.float32)[None,:]
         return self.transform(img), self.transform(gt)
 
     def __len__(self):

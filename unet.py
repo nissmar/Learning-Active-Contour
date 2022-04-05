@@ -100,7 +100,6 @@ class UNet(nn.Module):
         self.up3 = Up(256, 128 // factor, bilinear)
         self.up4 = Up(128, 64, bilinear)
         self.outc = OutConv(64, n_classes)
-        self.activation = torch.nn.Sigmoid()  # TODO
 
     def forward(self, x):
         x1 = self.inc(x)
@@ -113,4 +112,4 @@ class UNet(nn.Module):
         x = self.up3(x, x2)
         x = self.up4(x, x1)
         logits = self.outc(x)
-        return self.activation(logits)
+        return logits
