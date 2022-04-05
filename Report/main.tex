@@ -1,0 +1,119 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[french]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{lipsum} 
+\usepackage{adjustbox}
+\usepackage{pgffor}
+\title{Learning Active Contour Models for Medical Image Segmentation}
+\author{Nissim Maruani}
+
+\begin{document}
+\maketitle
+
+\section{Étude synthétique de l'article}
+
+
+\subsection{Problème traité}
+
+L'article étudié s'attaque au problème de segmentation dans une image, appliqué ici au milieu médical. La segmentation consiste à donner à partir d'une image $u \in R^{H \times W \times d}$ (de dimension $d=3$ pour une image en couleur RGB, $d=1$ pour une image en niveau de gris) et à colorier $k$ régions pour obtenir $v \in [0... k]^{H \times W}$. Les images concernées sont des IRM du cœur dont il faut segmenter trois régions : le ventricule droit, le ventricule gauche et le myocarde. La détection automatique de ces régions permet au praticien de prévenir ou d'identifier des maladies cardiovasculaires qui tuent chaque année 17.9 millions de personnes. 
+
+\subsection{Méthodes utilisées et originalité de l'article}
+
+Pour segmenter ces trois régions, l'article propose d'utiliser des réseaux de neurones convolutifs (aussi appelés CNN), très utilisés dans l'analyse des images car les convolutions sont invariantes par translation. À partir d'IRM segmentées précisément par des humains, l'algorithme "apprend" à reconnaitre les différentes zones en optimisant ses paramètres. D'abord initialisés au hasard, ceux-ci sont modifiés à chaque itération par une descente de gradient (en anglais \textit{back-propagation}) de la fonction de perte (en anglais \textit{loss}). 
+
+L'article étudié propose d'utiliser la structure classique appelée U-Net, suite de convolutions, de fonctions MaxPool (sous échantillonnage de l'image) et de fonctions d'activations non-linéaires (ici $ReLU(x) = \max(x, 0)$). La variante utilisée est appelée Dense U-Net, TODO
+
+
+
+\subsection{Comparaison au cours}
+
+\subsection{Nouveaux résultats}
+
+
+\subsection{Avis critique}
+- PK un seul dataset si lambda robuste
+- Separation test/train
+- un Modele par region ? comment faire si les regions sont en overlap (mauvaise detection) ??
+
+
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+%
+%\begin{table}[!h]
+%\centering
+%\begin{tabular}{|l||c|c|c|r|}
+%\hline
+%Dataset & VoxelGrid + TV & VoxelGrid & VoxelGridCarve & VoxelGridSphericalCarve \\\hline
+%Drums & 20.12 dB & 20.12 dB  & 19.32 dB & 19.72 dB\\
+%Chair & 23.69 dB & 23.70 dB & 24.22 dB & 26.94 dB \\ 
+%Ship & 20.65  dB & 20.66 dB & 20.25 dB &  21.91 dB\\
+%Ficus & 23.86 dB & 23.85 dB & 21.90 dB & 21.66 dB\\
+%HotDog &  23.79 dB &  23.75 dB & 23.45 dB & 25.99 dB  \\
+%Materials &  20.98 dB &  20.99 dB & 19.715 dB & 22.41 dB \\
+%Lego &   21.43 dB &  21.42 dB  & 20.72 dB & 22.94 dB \\
+%Mic &  22.32 dB & 22.29 dB  & 20.63 dB & 21.62 dB\\
+%\hline 
+%Mean & 22.10 ± 1.41  dB & 22.10 ± 1.41 dB & 21.28 ± 1.65 dB & 22.90 ± 2.24 dB \\
+%\hline\hline
+%Training Time & 35 minutes & 35 minutes & 1 minute & 4 minutes \\
+%\hline 
+%\end{tabular}
+%\caption{\label{tab:psnr}PSNR on different training methods.}
+%\end{table}
+
+
+
+%
+%\begin{figure}[!h]
+% \centering
+%\begin{subfigure}{.19\textwidth}
+%  \centering
+%  \includegraphics[width=\linewidth]{figs/model0.png}  
+%\end{subfigure}
+%\begin{subfigure}{.19\textwidth}
+%  \centering
+%  \includegraphics[width=\linewidth]{figs/model1.png}  
+%\end{subfigure}
+%\begin{subfigure}{.19\textwidth}
+%  \centering
+%  \includegraphics[width=\linewidth]{figs/model3.png}  
+%\end{subfigure}
+%\begin{subfigure}{.19\textwidth}
+%  \centering
+%  \includegraphics[width=\linewidth]{figs/model15.png}  
+%\end{subfigure}
+%\begin{subfigure}{.19\textwidth}
+%  \centering
+%  \includegraphics[width=\linewidth]{figs/model32.png}  
+%\end{subfigure}
+%     \caption{Our VoxelGrid at epoch {0, 2, 6, 14, 22}. Total computation time: 35 minutes on a single GPU.}
+%    \label{fig:lego_optim}
+%\end{figure}
+
+
+%
+%
+%
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=1.\textwidth]{figs/plen_pipeline.png}
+%\caption{\label{fig:plenoxel} [image source: \cite{plenoxels}] The plenoxels method is composed of four steps : (a) camera rays are extracted from training images and sampled on a sparse voxel grid ; (b) the spherical harmonics of degree 9 and opacities are computed for each sample through trilinear interpolation ; (c) the resulting colors and opacities are summed to obtain a single pixel value for each ray (d) the mean squared error loss with a total variation regularizer is back-propagated to optimize the grid}
+%\end{figure}
+%
+
+
+\end{document}
