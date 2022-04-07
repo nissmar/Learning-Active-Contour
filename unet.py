@@ -1,5 +1,5 @@
 
-""" Parts of the U-Net model source: https://github.com/milesial/Pytorch-UNet"""
+"""source: https://github.com/milesial/Pytorch-UNet"""
 
 import torch
 import torch.nn as nn
