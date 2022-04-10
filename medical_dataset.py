@@ -5,7 +5,7 @@ from glob import glob
 import torch
 
 data_transforms = [
-    transforms.Resize((256,256))
+    transforms.Resize((256, 256))
 ]
 
 
@@ -25,8 +25,10 @@ class MedicalDataset(Dataset):
         self.transform = transforms.Compose(transform)
 
     def __getitem__(self, index):
-        img = torch.tensor(self.images[index]/255.0, dtype=torch.float32)[None,:]
-        gt = torch.tensor(self.ground_truths[index], dtype=torch.float32)[None,:]
+        img = torch.tensor(self.images[index] /
+                           255.0, dtype=torch.float32)[None, :]
+        gt = torch.tensor(self.ground_truths[index], dtype=torch.float32)[
+            None, :]
         return self.transform(img), self.transform(gt)
 
     def __len__(self):
