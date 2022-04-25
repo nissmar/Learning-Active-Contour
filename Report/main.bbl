@@ -1,35 +1,40 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{YFKT{\etalchar{+}}21}
+\begin{thebibliography}{CWV{\etalchar{+}}19}
 
-\bibitem[KS00]{spacecarving}
-Kiriakos~N Kutulakos and Steven~M Seitz.
-\newblock A theory of shape by space carving.
-\newblock {\em International journal of computer vision}, 38(3):199--218, 2000.
+\bibitem[BBC07]{findingclosed}
+Fethallah Benmansour, St{\'e}phane Bonneau, and Laurent~D Cohen.
+\newblock Finding a closed boundary by growing minimal paths from a single
+  point on 2d or 3d images.
+\newblock In {\em 2007 IEEE 11th International Conference on Computer Vision},
+  pages 1--8. IEEE, 2007.
 
-\bibitem[MESK22]{instant}
-Thomas M{\"u}ller, Alex Evans, Christoph Schied, and Alexander Keller.
-\newblock Instant neural graphics primitives with a multiresolution hash
-  encoding.
-\newblock {\em arXiv preprint arXiv:2201.05989}, 2022.
+\bibitem[CK97]{globalmin}
+Laurent~D Cohen and Ron Kimmel.
+\newblock Global minimum for active contour models: A minimal path approach.
+\newblock {\em International journal of computer vision}, 24(1):57--78, 1997.
 
-\bibitem[MST{\etalchar{+}}20]{nerf}
-Ben Mildenhall, Pratul~P Srinivasan, Matthew Tancik, Jonathan~T Barron, Ravi
-  Ramamoorthi, and Ren Ng.
-\newblock Nerf: Representing scenes as neural radiance fields for view
-  synthesis.
-\newblock In {\em European conference on computer vision}, pages 405--421.
-  Springer, 2020.
+\bibitem[CMC16]{finsler}
+Da~Chen, Jean-Marie Mirebeau, and Laurent~D Cohen.
+\newblock Finsler geodesics evolution model for region based active contours.
+\newblock In {\em Proc. BMVC}, volume~2, page~8, 2016.
 
-\bibitem[SSC21]{directvoxgo}
-Cheng Sun, Min Sun, and Hwann-Tzong Chen.
-\newblock Direct voxel grid optimization: Super-fast convergence for radiance
-  fields reconstruction.
-\newblock {\em arXiv preprint arXiv:2111.11215}, 2021.
+\bibitem[CWV{\etalchar{+}}19]{learningcontour}
+Xu~Chen, Bryan~M Williams, Srinivasa~R Vallabhaneni, Gabriela Czanner, Rachel
+  Williams, and Yalin Zheng.
+\newblock Learning active contour models for medical image segmentation.
+\newblock In {\em Proceedings of the IEEE/CVF conference on computer vision and
+  pattern recognition}, pages 11632--11640, 2019.
 
-\bibitem[YFKT{\etalchar{+}}21]{plenoxels}
-Alex Yu, Sara Fridovich-Keil, Matthew Tancik, Qinhong Chen, Benjamin Recht, and
-  Angjoo Kanazawa.
-\newblock Plenoxels: Radiance fields without neural networks.
-\newblock {\em arXiv preprint arXiv:2112.05131}, 2021.
+\bibitem[LYC06]{brainseg}
+Hua Li, Anthony Yezzi, and Laurent~D Cohen.
+\newblock 3d brain segmentation using dual-front active contours with optional
+  user interaction.
+\newblock {\em International Journal of Biomedical Imaging}, 2006, 2006.
+
+\bibitem[RFB15]{unet}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In {\em International Conference on Medical image computing and
+  computer-assisted intervention}, pages 234--241. Springer, 2015.
 
 \end{thebibliography}
